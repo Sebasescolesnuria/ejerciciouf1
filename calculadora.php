@@ -1,16 +1,14 @@
 <?php
 declare (strict_types=1);
 
-function performOperation(){
-    $opcion = $_GET["opcion"];
-    $num = $_GET["num"];
+function performOperation($opcion, $num){
     switch ($opcion){
-        case 0:
-            factorials($num);
-        case 1:
-            suma($num);
-        case 2:
-            primers($num);
+        case "factorial":
+            return factorials($num);
+        case "sum":
+            return suma($num);
+        case "prime":
+            return primers($num);
     }
 }
 
@@ -26,10 +24,11 @@ function factorials (int $num): int{
     
     }
     return $num3;
+    echo factorial($num);
 }
 
-function suma(int $num): array{
-    $resultado = $num1 + $num2;
+function suma(array $num): int{
+    $resultado = array_sum($num);
     return $resultado;
 }
 
@@ -48,5 +47,7 @@ function primers(int $num): bool{
         return true;
     }
 }
+
+echo performOperation("prime",43);
 
 ?>
