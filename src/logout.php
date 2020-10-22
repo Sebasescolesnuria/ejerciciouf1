@@ -13,7 +13,7 @@
 </html>
 
 <?php
-    $logout = filter_input(INPUT_POST["logout"]);
+    $logout = filter_input(INPUT_POST,"logout");
     if ($logout == TRUE){
         unset ($_COOKIE ["name"]);
         unset ($_COOKIE ["password"]);

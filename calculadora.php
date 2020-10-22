@@ -48,6 +48,6 @@ function primers(int $num): bool{
     }
 }
 
-echo performOperation("prime",43);
+echo performOperation("sum",[8,2]);
 
 ?>

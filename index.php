@@ -3,7 +3,7 @@
     require __DIR__.'/src/connect.php';
     require __DIR__.'/src/schema.php';
     $dbname = "usuarios";
-    $base = connectSqlite("usuarios");
+    $base = connectSqlite($dbname);
     schemaGenerator($base);
 
     if ($_COOKIE["name"]){ //Lee si hay una cookie con el nombre de usuario para redirigirnos directamente a la página de inicio y decirnos cuando fue nuestra última visita.

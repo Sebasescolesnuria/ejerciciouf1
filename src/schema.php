@@ -45,11 +45,11 @@ function insertSchema(PDO $db,$datos){
                     $password = $value;
                     echo $key.' '.$value.'<br>';
                 }
-                $command = "
+                $command4 = "
                 INSERT INTO usuarios (name,password) VALUES ('$user','$password')";
             }
             try{
-                $db -> exec($command);
+                $db -> exec($command4);
             }catch(PDOException $e){
                 die ($e -> getMessage());
                 }
@@ -57,10 +57,10 @@ function insertSchema(PDO $db,$datos){
         }
     }
 function login(PDO $db, $user, $password){ //Creamos la funcion login para comprobar con la sentencia SELECT que los datos introducios en el formulario existen el la base de datos.
-    $command4 = "
+    $command5 = "
     SELECT * FROM usuarios WHERE name='$user' AND password='$password'";
     try{
-        $db -> exec($command4);
+        $db -> exec($command5);
     }catch(PDOException $e){
         die($e -> getMessage());
     }

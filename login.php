@@ -1,14 +1,14 @@
 <?php
-include __DIR__.'/src/schema.php';
-include __DIR__.'/src/connect.php';
+require __DIR__.'/src/schema.php';
+require __DIR__.'/src/connect.php';
 
-$user = filter_input(INPUT_POST,["name"]);
-$password = filter_input(INPUT_POST,["password"]);
-$recordar = filter_input(INPUT_POST,["recordar"]);
-$register = filter_input(INPUT_POST,["register"]);
+$user = filter_input(INPUT_POST,"name");
+$password = filter_input(INPUT_POST,"password"); //Hay que convertir la contraseña en hush
+$recordar = filter_input(INPUT_POST,"recordar");
+$register = filter_input(INPUT_POST,"register");
 $tiempo = getdate();
 $dbname = "usuarios";
-$base = connectSqlite("usuarios");
+$base = connectSqlite($dbname);
 
 if ($register == TRUE){ //Comprueba si el checkbox esta seleccionado para registrar el usuario en la db
     insertItems($base,$user,$password); //Guardamos y enviamos los valores a InsertSchema para que haga la funcion SQL de insertar nuevos valores en la BD
