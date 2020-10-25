@@ -6,7 +6,7 @@ $user = filter_input(INPUT_POST,"name");
 $password = filter_input(INPUT_POST,"password"); //Hay que convertir la contraseña en hush
 $recordar = filter_input(INPUT_POST,"recordar");
 $register = filter_input(INPUT_POST,"register");
-$tiempo = getdate();
+$tiempo = date("d-M-Y H:i:s");
 $dbname = "usuarios";
 $base = connectSqlite($dbname);
 
@@ -23,15 +23,11 @@ if ($register == TRUE){ //Comprueba si el checkbox esta seleccionado para regist
     }
 }
 else{
-    login($base,$user,$password); //Envia los datos a la sentencia SQL login para poder ver si el usuario insertado existe en la base de datos.
     if ($recordar == TRUE){
         setcookie("name",$user);
         setcookie("password",$password); 
         setcookie("tiempovisita",$tiempo); 
-        header('Location: src/loginconcookie.php');
     }
-    else{
-        header('Location: src/loginsincookie.php');
-    }
+    login($base,$user,$password,$recordar);//Envia los datos a la sentencia SQL login para poder ver si el usuario insertado existe en la base de datos.
 }
 ?>
